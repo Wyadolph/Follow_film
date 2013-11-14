@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   def create
   	@user = User.new(user_params)
   	if @user.save  # if save to db succeed, then redirect to user_message page
+      sign_in @user  # auto sign_in after sign_up
   		flash[:success] = "Welcome to the Follow_film App!"
   		redirect_to @user
   	else  # if save to db failed, reload signup page
