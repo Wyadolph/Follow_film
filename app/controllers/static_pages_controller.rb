@@ -29,6 +29,7 @@ def search
     @filmloc=params[:location]
     @select=String.new(params[:searchId])
     @names=[]
+@location_names=[]
     @locOfRoute=[]
     @location=[]
     @printname=String.new
