@@ -1,13 +1,40 @@
+<% provide( :title, 'home') %>
+<%  if !signed_in? %>
 <div class="center hero-unit">
 	<h1>Welcome to the Follow Films Application</h1>
 
 	<h2>
 		This is the home page for the
-		<a href="http://railstutorial.org/">Follow Films</a>
+		<a href="">Follow Films</a>
 	</h2>
 
 	<%= link_to "Sign up now", signup_path, class: "btn btn-large btn-primary" %>
 </div>
+<% else %>
+	<h1>Show flim tracks</h1>
+	
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>
+	<%= javascript_include_tag "application"%>
+	<script type="text/javascript">
+	
+		google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+    <script type="text/javascript">
+    function hehe()
+    {
+    	alert("fuck");
+    }
+    </script>
+    <script type="text/javascript">
+    	$(document).ready($("button").click(hehe());
+    </script>
+    <body>
+		<div id="map-canvas" style="width:760px;height:600px"></div>
+		<input type="text" id="check_box"/><button onclick=" search()" class="btn btn-primary" >Search</button>
+	</body>
+<% end %>
+
+
 <!--
 <%= link_to image_tag("rails.png", alt: "Rails"), 'http://rubyonrails.org/' %>
->
+-->

@@ -1,0 +1,22 @@
+<% provide(:title, @route.name) %>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>
+<%= javascript_include_tag "application"%>
+<script type="text/javascript">
+	google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+<body>
+    <a class="shareto_button" href="http://shareto.com.cn/share.html"><img src="http://s.shareto.com.cn/btn/lg-share-cn.gif" width="125" height="21" alt="分享道" style="border:0"/></a>
+	<script type="text/javascript" src="http://s.shareto.com.cn/js/shareto_button.js" charset="utf-8">
+	</script>
+	<div id="map-canvas" style="width:760px;height:600px"></div>
+    <h1>
+		<%= @route.name %>
+		<%location=[]%>
+		<% (RoutesLocations.find_all_by_route_id(@route.id)).each do |t|%>
+		<%= (Location.find(t.location_id)).name%>
+		<%location<<(Location.find(t.location_id)).name%>
+		<%end%>
+	<h1>
+ 	<button onclick="drawRoute(<%=location%>)">show route</button>
+ </body>
+  

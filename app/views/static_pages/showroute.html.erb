@@ -1,0 +1,33 @@
+<% provide(:title, 'All routes') %>
+<h1>All routes</h1>
+<%= will_paginate @routes %>
+
+
+	<% @routes.each do |route| %>
+
+		<%if route.user_id!=nil%>	
+		
+		<li>
+
+			<%= link_to route.name, route %>
+			
+			<%= link_to (User.find(route.user_id)).name ,User.find(route.user_id) %>
+			<%#= link_to route.user.name, route.user %>
+			
+			<% unless current_user==(User.find(route.user_id)) %>
+			
+				<%= render 'follow_form', route: route if signed_in? %>
+			
+			<% else%>
+				<br><ul class="btn btn-small disabled btn-primary">MyRoute</ul></br>
+			<% end %>
+		
+		</li>
+		
+		<% end %>
+	<% end %>
+
+
+<%= will_paginate @routes %>
+
+
